@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+@layer components {
+  .btn-yellow {
+    @apply bg-brand-yellow text-brand-dark font-bold px-6 py-3 rounded hover:bg-brand-yellow-dark transition-all duration-200 inline-flex items-center gap-2;
+  }
+  .btn-outline-white {
+    @apply border-2 border-white text-white font-bold px-6 py-3 rounded hover:bg-white hover:text-brand-dark transition-all duration-200 inline-flex items-center gap-2;
+  }
+  .section-heading {
+    @apply text-2xl md:text-3xl font-black text-brand-dark uppercase tracking-wide;
+  }
+  .section-sub {
+    @apply text-gray-500 text-sm mt-2;
+  }
+  .section-line {
+    @apply w-14 h-1 bg-brand-yellow rounded-full mt-3 mb-6;
+  }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #f5c518; border-radius: 3px; }

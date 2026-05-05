@@ -1,0 +1,26 @@
+const express = require('express');
+const cors = require('cors');
+const path = require('path');
+const { initDB } = require('./db/database');
+
+const app = express();
+const PORT = process.env.PORT || 5025;
+
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : true;
+
+app.use(cors({ origin: allowedOrigins, credentials: true }));
+app.use(express.json());
+
+initDB();
+
+app.use('/api/categories', require('./routes/categories'));
+app.use('/api/products', require('./routes/products'));
+app.use('/api/news', require('./routes/news'));
+app.use('/api/contacts', require('./routes/contacts'));
+app.use('/api/orders', require('./routes/orders'));
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Backend running on port ${PORT}`);
+});
