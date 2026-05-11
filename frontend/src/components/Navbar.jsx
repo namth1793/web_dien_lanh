@@ -22,14 +22,12 @@ export default function Navbar({ onCartClick }) {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-          <div className="w-11 h-11 rounded-full bg-brand-yellow flex items-center justify-center shadow">
-            <svg className="w-6 h-6 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
-            </svg>
-          </div>
+          <img src="/LOGO/487315668_1072654048216447_3543304931783471982_n.jpg" alt="Điện Lạnh Duy Khánh"
+            className="w-11 h-11 rounded-full object-cover shadow"
+            onError={e => { e.target.src = '/LOGO/627529988_1562292492033392_1953494431822085557_n.jpg'; }}/>
           <div className="leading-tight">
             <div className="font-black text-brand-dark text-base">ĐIỆN LẠNH DUY KHÁNH</div>
-            <div className="text-[10px] text-gray-400 uppercase tracking-wide">CTY SOLAR BASE – Cần Thơ</div>
+            <div className="text-[10px] text-gray-400 uppercase tracking-wide">CÔNG TY SOLAR BASE – Cần Thơ</div>
           </div>
         </Link>
 

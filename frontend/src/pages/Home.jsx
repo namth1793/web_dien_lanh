@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const SERVICES = [
-  { icon: '❄️', title: 'Sửa chữa máy lạnh', desc: 'Sửa mọi sự cố: không lạnh, chảy nước, hỏng block, thiếu gas, lỗi bo mạch. Kỹ thuật viên đến tận nhà.' },
-  { icon: '🧹', title: 'Vệ sinh máy lạnh', desc: 'Vệ sinh dàn lạnh, dàn nóng chuyên sâu – diệt khuẩn, khử mùi – máy mát hơn, tiết kiệm điện.' },
-  { icon: '🔧', title: 'Tháo lắp máy lạnh', desc: 'Tháo lắp, di dời máy lạnh đúng kỹ thuật. Tặng vật tư + công lắp khu vực Ninh Kiều, Cái Răng.' },
-  { icon: '🫧', title: 'Sửa chữa máy giặt', desc: 'Khắc phục: không quay, không vắt, rò nước, lỗi board mạch – tất cả các thương hiệu tại nhà.' },
-  { icon: '🧊', title: 'Sửa chữa tủ lạnh', desc: 'Sửa tủ lạnh không lạnh, đóng tuyết, rò điện, hỏng block, nạp gas – nhanh chóng, uy tín.' },
-  { icon: '🏠', title: 'Vệ sinh máy giặt', desc: 'Tháo lồng giặt vệ sinh sâu, loại bỏ cặn bẩn, mùi hôi – quần áo sạch thơm như mới.' },
+  { icon: '❄️', title: 'Sửa chữa máy lạnh', desc: 'Sửa mọi sự cố: không lạnh, chảy nước, hỏng block, thiếu gas, lỗi bo mạch. Kỹ thuật viên đến tận nhà.', img: '/SUA%20CHUA%20MAY%20LANH/487396338_1294721982123779_1821340800911696131_n.jpg' },
+  { icon: '🧹', title: 'Vệ sinh máy lạnh', desc: 'Vệ sinh dàn lạnh, dàn nóng chuyên sâu – diệt khuẩn, khử mùi – máy mát hơn, tiết kiệm điện.', img: '/VE%20SINH%20MAY%20LANH/487302961_1293768195552491_2989817229053310482_n.jpg' },
+  { icon: '🔧', title: 'Tháo lắp máy lạnh', desc: 'Tháo lắp, di dời máy lạnh đúng kỹ thuật. Tặng vật tư + công lắp khu vực Ninh Kiều, Cái Răng.', img: '/LAP%20DAT%20MAY%20LANH/505444647_1353418382920805_6546992740157024720_n.jpg' },
+  { icon: '🫧', title: 'Sửa chữa máy giặt', desc: 'Khắc phục: không quay, không vắt, rò nước, lỗi board mạch – tất cả các thương hiệu tại nhà.', img: '/SUA%20CHUA%20MAY%20GIAT/594955796_1511027010493274_5059038851730414396_n.jpg' },
+  { icon: '🧊', title: 'Sửa chữa tủ lạnh', desc: 'Sửa tủ lạnh không lạnh, đóng tuyết, rò điện, hỏng block, nạp gas – nhanh chóng, uy tín.', img: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=500&h=280&fit=crop' },
+  { icon: '🏠', title: 'Vệ sinh máy giặt', desc: 'Tháo lồng giặt vệ sinh sâu, loại bỏ cặn bẩn, mùi hôi – quần áo sạch thơm như mới.', img: '/VE%20SINH%20MAY%20GIAT/571272130_1246645977483919_78131708542412010_n.jpg' },
 ];
 
 const WHYS = [
@@ -76,7 +76,7 @@ export default function Home() {
         <div className="absolute inset-0 opacity-5"
           style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)', backgroundSize: '20px 20px' }}
         />
-        <div className="relative max-w-7xl mx-auto px-4 py-16 lg:py-24 flex items-center">
+        <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-16 lg:py-24 flex items-center">
           <div className="w-full lg:w-1/2">
             <span className="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/40 text-brand-yellow text-xs font-bold px-3 py-1.5 rounded-full mb-5">
               <span className="w-2 h-2 bg-brand-yellow rounded-full animate-pulse"/>
@@ -92,7 +92,7 @@ export default function Home() {
               </div>
               <span className="text-brand-yellow text-sm font-bold">5,0 (486 đánh giá)</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-[52px] font-black text-white leading-tight mb-4">
+            <h1 className="font-hero font-extrabold text-white leading-[1.05] mb-4 uppercase tracking-wide text-[2.6rem] sm:text-5xl lg:text-[3.5rem]">
               ĐA DẠNG<br/>
               DỊCH VỤ<br/>
               ĐIỆN LẠNH TẠI{' '}
@@ -117,17 +117,13 @@ export default function Home() {
           </div>
           <div className="hidden lg:flex w-1/2 justify-end pl-10">
             <div className="relative w-full max-w-md">
-              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-yellow/30 shadow-2xl"
-                style={{ background: 'linear-gradient(135deg, #162040 0%, #1e2d50 100%)' }}>
-                <div className="w-full h-full flex flex-col items-center justify-center text-center p-6">
-                  <span className="text-8xl mb-4">👨‍🔧</span>
-                  <div className="text-brand-yellow font-black text-xl">ĐIỆN LẠNH DUY KHÁNH</div>
-                  <div className="text-gray-300 text-sm mt-1">Chuyên nghiệp – Tận tâm – Uy tín</div>
-                  <div className="mt-4 flex gap-3 text-xs text-gray-400">
-                    <span className="bg-brand-yellow/20 px-2 py-1 rounded text-brand-yellow">6+ năm kinh nghiệm</span>
-                    <span className="bg-white/10 px-2 py-1 rounded">Cần Thơ</span>
-                  </div>
-                </div>
+              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-yellow/30 shadow-2xl">
+                <img
+                  src="/banner%20hero/674856834_1625489449047029_1617532125787296419_n.jpg"
+                  alt="Điện Lạnh Duy Khánh"
+                  className="w-full h-full object-cover"
+                  onError={e => { e.target.src = 'https://placehold.co/400x300/1e2d50/f5c518?text=Điện+Lạnh+Duy+Khánh'; }}
+                />
               </div>
               <div className="absolute -bottom-4 -left-4 bg-brand-yellow text-brand-dark font-black px-4 py-2 rounded-xl shadow-xl text-sm">
                 🛡️ Bảo hành 1–6 tháng
@@ -168,11 +164,15 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map(s => (
               <Link to="/dich-vu" key={s.title}
-                className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 border border-gray-100 group flex gap-4">
-                <div className="w-14 h-14 bg-brand-yellow/10 group-hover:bg-brand-yellow/20 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors text-3xl">
-                  {s.icon}
+                className="bg-white rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200 border border-gray-100 group overflow-hidden flex flex-col">
+                <div className="relative h-44 overflow-hidden flex-shrink-0">
+                  <img src={s.img} alt={s.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={e => { e.target.src = 'https://placehold.co/500x280/0d1b35/f5c518?text=Dịch+Vụ'; }}/>
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/70 via-transparent to-transparent"/>
+                  <span className="absolute bottom-2.5 left-3 text-2xl drop-shadow-lg">{s.icon}</span>
                 </div>
-                <div>
+                <div className="p-5 flex-1">
                   <h3 className="font-bold text-brand-dark mb-1.5 group-hover:text-brand-yellow transition-colors">{s.title}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{s.desc}</p>
                 </div>
@@ -252,11 +252,10 @@ export default function Home() {
           </div>
           <div className="relative">
             <div className="hidden lg:block absolute top-10 left-[10%] right-[10%] h-0.5 bg-brand-yellow/30"/>
-            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-              {STEPS.map((s, i) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+              {STEPS.map((s) => (
                 <div key={s.n} className="relative flex flex-col items-center text-center">
-                  <div className={`w-20 h-20 rounded-full flex items-center justify-center font-black text-xl mb-4 border-4 z-10 relative transition-colors
-                    ${i === 0 ? 'bg-brand-yellow border-brand-yellow text-brand-dark' : 'bg-white border-brand-yellow/40 text-brand-dark'}`}>
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center font-black text-xl mb-4 border-4 z-10 relative bg-brand-yellow border-brand-yellow text-brand-dark shadow-lg shadow-brand-yellow/30">
                     {s.n}
                   </div>
                   <h3 className="font-bold text-brand-dark mb-2 text-sm">{s.title}</h3>

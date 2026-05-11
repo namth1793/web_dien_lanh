@@ -16,7 +16,7 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-black text-white text-sm leading-tight">ĐIỆN LẠNH DUY KHÁNH</div>
-                <div className="text-[10px] text-gray-400 uppercase tracking-wide">CTY TNHH TM DV SOLAR BASE</div>
+                <div className="text-[10px] text-gray-400 uppercase tracking-wide">CÔNG TY TNHH TM DV SOLAR BASE</div>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
@@ -86,12 +86,6 @@ export default function Footer() {
                 </svg>
                 <a href="https://dienlanhcantho.com" target="_blank" rel="noreferrer" className="hover:text-brand-yellow transition-colors">dienlanhcantho.com</a>
               </li>
-              <li className="flex gap-2.5">
-                <svg className="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span>T2–T7: 07:30–17:30 | Hotline 24/7</span>
-              </li>
             </ul>
           </div>
 
@@ -100,27 +94,26 @@ export default function Footer() {
             <h3 className="font-bold text-white mb-4 text-sm uppercase tracking-wide border-b border-brand-dark-3 pb-2">
               Bản đồ
             </h3>
-            <div className="rounded-lg overflow-hidden bg-brand-dark-3 h-44 flex items-center justify-center relative">
-              <div className="text-center">
-                <div className="text-4xl mb-2">🗺️</div>
-                <p className="text-gray-400 text-xs">377 KDC Tân Phú</p>
-                <p className="text-gray-400 text-xs">P.Hưng Phú, TP Cần Thơ</p>
-                <a
-                  href="https://maps.google.com/?q=377+KDC+Tân+Phú+Phường+Hưng+Phú+Cần+Thơ"
-                  target="_blank" rel="noreferrer"
-                  className="inline-block mt-2 bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-1.5 rounded hover:bg-brand-yellow-dark transition-colors"
-                >
-                  Xem bản đồ →
-                </a>
-              </div>
+            <div className="rounded-lg overflow-hidden h-44">
+              <iframe
+                src="https://maps.google.com/maps?q=377+KDC+T%C3%A2n+Ph%C3%BA%2C+Ph%C6%B0%E1%BB%9Dng+H%C6%B0ng+Ph%C3%BA%2C+C%E1%BA%A7n+Th%C6%A1%2C+Vi%E1%BB%87t+Nam&output=embed&z=16"
+                width="100%" height="100%" style={{ border: 0 }}
+                allowFullScreen="" loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Điện Lạnh Duy Khánh – SOLAR BASE"
+              />
             </div>
+            <a href="https://maps.app.goo.gl/6zJCMjVs96MyYqzw7" target="_blank" rel="noreferrer"
+              className="inline-block mt-2 bg-brand-yellow text-brand-dark text-xs font-bold px-3 py-1.5 rounded hover:bg-brand-yellow-dark transition-colors">
+              Xem trên Google Maps →
+            </a>
           </div>
         </div>
       </div>
 
       <div className="border-t border-brand-dark-3">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
-          <span>© 2025 Điện Lạnh Cần Thơ – Duy Khánh | CTY TNHH TM DV SOLAR BASE | MST: 1801827040</span>
+          <span>© 2025 Điện Lạnh Cần Thơ – Duy Khánh | CÔNG TY TNHH TM DV SOLAR BASE | MST: 1801827040</span>
           <div className="flex items-center gap-1">
             <span className="text-brand-yellow">★★★★★</span>
             <span>5,0 (486 đánh giá)</span>

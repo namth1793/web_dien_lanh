@@ -15,6 +15,7 @@ export default {
       },
       fontFamily: {
         sans: ['Be Vietnam Pro', 'sans-serif'],
+        hero: ['Barlow Condensed', 'sans-serif'],
       },
     },
   },

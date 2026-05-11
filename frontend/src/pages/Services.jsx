@@ -11,7 +11,7 @@ const SERVICES = [
       <div className="space-y-5 text-sm text-gray-600 leading-relaxed">
         <div className="bg-brand-yellow/10 border-l-4 border-brand-yellow p-4 rounded-r-lg">
           <p className="font-bold text-brand-dark text-base">SỬA CHỮA TẬN NHÀ – CHẤT LƯỢNG – KHỎI LO VỀ GIÁ</p>
-          <p className="mt-1">CHỈ CÓ Ở ĐIỆN LẠNH CẦN THƠ – DUY KHÁNH (CTY SOLAR BASE)</p>
+          <p className="mt-1">CHỈ CÓ Ở ĐIỆN LẠNH CẦN THƠ – DUY KHÁNH (CÔNG TY SOLAR BASE)</p>
           <p className="font-bold text-brand-yellow mt-1">HOTLINE: 0911.678.101</p>
         </div>
 

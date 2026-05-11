@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const STATS = [
@@ -23,15 +24,17 @@ const SERVICES_LIST = [
 ];
 
 const PROJECT_AREAS = [
-  { icon: '🏠', label: 'Hộ gia đình', desc: 'Từ phòng trọ, căn hộ đến biệt thự' },
-  { icon: '🏢', label: 'Văn phòng & Công ty', desc: 'Lắp đặt, bảo trì hệ thống điện lạnh' },
-  { icon: '🏪', label: 'Cửa hàng & Spa', desc: 'Đảm bảo thiết bị hoạt động liên tục' },
-  { icon: '🏫', label: 'Trường học', desc: 'Bảo trì định kỳ cho trường mầm non – ĐH' },
-  { icon: '🏗️', label: 'Nhà xưởng', desc: 'Hệ thống công nghiệp, điều hòa trung tâm' },
-  { icon: '🛏️', label: 'Nhà trọ & Sinh viên', desc: 'Giá ưu đãi, hỗ trợ nhanh' },
+  { icon: '🏠', label: 'Hộ gia đình', desc: 'Từ phòng trọ, căn hộ đến biệt thự – lắp đặt, sửa chữa, bảo trì máy lạnh tại nhà.', img: '/Feature%20Project/489377280_1303814041214573_9064913014035289146_n.jpg' },
+  { icon: '🏢', label: 'Văn phòng & Công ty', desc: 'Lắp đặt, bảo trì hệ thống điện lạnh cho văn phòng, tòa nhà thương mại.', img: '/Feature%20Project/490515566_1307240420871935_3059378839953594592_n.jpg' },
+  { icon: '🏪', label: 'Cửa hàng & Spa', desc: 'Đảm bảo thiết bị điện lạnh hoạt động liên tục, phục vụ khách hàng tốt nhất.', img: '/Feature%20Project/495111886_1325245502404760_6805216453220242613_n.jpg' },
+  { icon: '🏫', label: 'Trường học', desc: 'Bảo trì định kỳ, sửa chữa hệ thống điều hòa cho trường mầm non đến đại học.', img: '/Feature%20Project/dai-hoc-can-tho-1740299150370911412765.jpg' },
+  { icon: '🏗️', label: 'Nhà xưởng', desc: 'Hệ thống làm mát công nghiệp, điều hòa trung tâm cho nhà máy, xưởng sản xuất.', img: '/Feature%20Project/519877997_1387994512796525_5922194540796158334_n.jpg' },
+  { icon: '🛏️', label: 'Nhà trọ & Sinh viên', desc: 'Giá ưu đãi, hỗ trợ nhanh cho phòng trọ, ký túc xá tại Cần Thơ.', img: '/Feature%20Project/532355892_1411404527122190_5994366527117553497_n.jpg' },
 ];
 
 export default function About() {
+  const [modal, setModal] = useState(null);
+
   return (
     <div>
       {/* Page header */}
@@ -165,13 +168,42 @@ export default function About() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
             {PROJECT_AREAS.map(a => (
-              <div key={a.label} className="bg-white rounded-xl border border-gray-100 shadow-sm p-4 text-center hover:border-brand-yellow hover:shadow-md transition-all">
-                <div className="text-3xl mb-2">{a.icon}</div>
-                <div className="font-bold text-brand-dark text-xs mb-1">{a.label}</div>
-                <div className="text-gray-400 text-[11px] leading-tight">{a.desc}</div>
-              </div>
+              <button key={a.label} onClick={() => setModal(a)}
+                className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden hover:border-brand-yellow hover:shadow-md transition-all text-left group cursor-pointer">
+                <div className="relative h-28 overflow-hidden">
+                  <img src={a.img} alt={a.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={e => { e.target.src = `https://placehold.co/300x180/0d1b35/f5c518?text=${encodeURIComponent(a.label)}`; }}/>
+                  <div className="absolute inset-0 bg-brand-dark/40 group-hover:bg-brand-dark/20 transition-colors"/>
+                  <span className="absolute top-2 left-2 text-2xl drop-shadow">{a.icon}</span>
+                </div>
+                <div className="p-3 text-center">
+                  <div className="font-bold text-brand-dark text-xs mb-0.5 group-hover:text-brand-yellow transition-colors">{a.label}</div>
+                  <div className="text-gray-400 text-[10px] leading-tight hidden sm:block">{a.desc.split('–')[0]}</div>
+                </div>
+              </button>
             ))}
           </div>
+
+          {modal && (
+            <div className="fixed inset-0 z-[999] flex items-center justify-center p-4" onClick={() => setModal(null)}>
+              <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"/>
+              <div className="relative bg-white rounded-2xl overflow-hidden max-w-lg w-full shadow-2xl" onClick={e => e.stopPropagation()}>
+                <img src={modal.img} alt={modal.label} className="w-full h-56 object-cover"
+                  onError={e => { e.target.src = `https://placehold.co/700x450/0d1b35/f5c518?text=${encodeURIComponent(modal.label)}`; }}/>
+                <div className="absolute top-3 right-3">
+                  <button onClick={() => setModal(null)} className="bg-white/90 hover:bg-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-gray-700 shadow">✕</button>
+                </div>
+                <div className="p-6">
+                  <div className="text-3xl mb-2">{modal.icon}</div>
+                  <h3 className="font-black text-brand-dark text-xl mb-2">{modal.label}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{modal.desc}</p>
+                  <a href="tel:0911678101" className="mt-4 inline-flex items-center gap-2 bg-brand-yellow text-brand-dark font-bold px-5 py-2.5 rounded-lg hover:bg-brand-yellow-dark transition-colors text-sm">
+                    📞 Liên hệ ngay
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* CTA */}

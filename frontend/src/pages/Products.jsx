@@ -32,7 +32,7 @@ const HANG_THANH_LY = [
     id: 'tl1',
     name: 'Máy giặt lồng đứng LG Inverter 10.5kg',
     price: 2500000,
-    img: 'https://placehold.co/300x220/2d4a1e/86efac?text=LG+Thanh+Lý',
+    img: '/4%20-C%20-%20SP1%20-%20MAY%20GIAT%20THANH%20LY%2010.5KG/659191523_1961185234786362_5503233279237780445_n.jpg',
     specs: [
       'Máy hoạt động êm, ngoại hình mới 90%',
       'Siêu tiết kiệm điện',
@@ -44,7 +44,7 @@ const HANG_THANH_LY = [
     id: 'tl2',
     name: 'Tủ lạnh LG Inverter 187 lít – Model GN-L205S',
     price: 2800000,
-    img: 'https://placehold.co/300x220/2d4a1e/86efac?text=Tủ+Lạnh+LG',
+    img: '/4%20-%20C-%20TU%20LANH%20THANH%20LY/668882488_1969493250622227_4110462357598820091_n.jpg',
     specs: [
       'Công nghệ biến tần Inverter – tiết kiệm điện, êm, bền',
       'Hệ thống khí lạnh đa chiều – thực phẩm tươi ngon',
@@ -58,7 +58,7 @@ const HANG_THANH_LY = [
     id: 'tl3',
     name: 'Máy lạnh Toshiba nội địa Nhật 1.5HP',
     price: 7200000,
-    img: 'https://placehold.co/300x220/2d4a1e/86efac?text=Toshiba+Nhật',
+    img: '/4%20-%20C%20-%20MAY%20LANH%20TOSHIBA%201.5%20HP/581009691_1851058609132359_8425348375473776134_n.jpg',
     specs: [
       'Siêu tiết kiệm điện, chạy im, bao bền',
       'Máy hoạt động tốt',
@@ -162,8 +162,13 @@ export default function Products() {
   return (
     <div>
       {/* Page header */}
-      <div className="bg-brand-dark py-10 px-4">
-        <div className="max-w-7xl mx-auto">
+      <div className="relative bg-brand-dark py-10 px-4 overflow-hidden">
+        <div className="absolute inset-0">
+          <img src="/BAN%20MAY%20LANH/583330855_1497007995228509_8875763659547529535_n.jpg" alt=""
+            className="w-full h-full object-cover opacity-20"
+            onError={e => { e.target.style.display = 'none'; }}/>
+        </div>
+        <div className="relative max-w-7xl mx-auto">
           <h1 className="text-2xl font-black text-white mb-1">Sản Phẩm Điện Lạnh</h1>
           <p className="text-gray-400 text-sm mb-2">Máy lạnh, máy giặt chính hãng – hàng mới + hàng thanh lý giá tốt</p>
           <nav className="text-xs text-gray-500 flex items-center gap-2">

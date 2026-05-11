@@ -66,26 +66,6 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Hours */}
-            <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
-              <h2 className="font-black text-brand-dark mb-3">Giờ làm việc</h2>
-              <div className="space-y-2 text-sm">
-                {[
-                  { day: 'Thứ 2 – Thứ 7', time: '07:30 – 17:30' },
-                  { day: 'Chủ nhật', time: 'Hỗ trợ Hotline' },
-                  { day: 'Ngày lễ, Tết', time: 'Hỗ trợ Hotline' },
-                ].map(h => (
-                  <div key={h.day} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-0">
-                    <span className="text-gray-600">{h.day}</span>
-                    <span className="font-bold text-brand-dark">{h.time}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-3 bg-brand-yellow/10 border border-brand-yellow/30 rounded-lg p-3 text-center">
-                <span className="text-brand-dark font-semibold text-sm">📞 Hotline 24/7: 0911.678.101</span>
-              </div>
-            </div>
-
             {/* Social */}
             <div className="bg-white rounded-xl border border-gray-100 shadow-sm p-5">
               <h2 className="font-black text-brand-dark mb-3">Mạng xã hội</h2>
@@ -178,21 +158,23 @@ export default function Contact() {
               </form>
             </div>
 
-            {/* Map placeholder */}
+            {/* Map */}
             <div className="bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden">
-              <div className="bg-brand-dark text-white px-4 py-3 font-semibold text-sm flex items-center gap-2">
-                <span className="text-brand-yellow">📍</span> Bản đồ – Điện Lạnh Duy Khánh / SOLAR BASE
+              <div className="bg-brand-dark text-white px-4 py-3 font-semibold text-sm flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                  <span className="text-brand-yellow">📍</span> Bản đồ – Điện Lạnh Duy Khánh
+                </span>
+                <a href="https://maps.app.goo.gl/6zJCMjVs96MyYqzw7" target="_blank" rel="noreferrer"
+                  className="text-brand-yellow text-xs hover:underline">Mở Google Maps →</a>
               </div>
-              <div className="bg-gray-50 h-52 flex items-center justify-center">
-                <div className="text-center">
-                  <span className="text-4xl block mb-2">🗺️</span>
-                  <p className="text-sm font-medium text-gray-700">Số 377 KDC Tân Phú</p>
-                  <p className="text-xs text-gray-500">Phường Hưng Phú, TP Cần Thơ</p>
-                  <a href="https://maps.google.com/?q=377+KDC+Tân+Phú+Phường+Hưng+Phú+Cần+Thơ" target="_blank" rel="noreferrer"
-                    className="inline-block mt-3 bg-brand-yellow text-brand-dark text-xs font-bold px-4 py-2 rounded hover:bg-brand-yellow-dark transition-colors">
-                    Xem trên Google Maps →
-                  </a>
-                </div>
+              <div className="h-72">
+                <iframe
+                  src="https://maps.google.com/maps?q=377+KDC+T%C3%A2n+Ph%C3%BA%2C+Ph%C6%B0%E1%BB%9Dng+H%C6%B0ng+Ph%C3%BA%2C+C%E1%BA%A7n+Th%C6%A1%2C+Vi%E1%BB%87t+Nam&output=embed&z=16"
+                  width="100%" height="100%" style={{ border: 0 }}
+                  allowFullScreen="" loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Điện Lạnh Duy Khánh – SOLAR BASE"
+                />
               </div>
             </div>
           </div>
