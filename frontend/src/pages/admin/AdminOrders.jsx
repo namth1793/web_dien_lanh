@@ -50,22 +50,24 @@ export default function AdminOrders() {
   if (loading) return <div className="p-8 text-center text-gray-500">Đang tải...</div>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-black text-gray-800 mb-6">Quản lý đơn hàng</h1>
+    <div className="p-4 md:p-6">
+      <h1 className="text-xl md:text-2xl font-black text-gray-800 mb-4 md:mb-6">Đơn hàng</h1>
 
-      {/* Filter */}
-      <div className="flex gap-2 mb-5 flex-wrap">
+      {/* Filter - scrollable on mobile */}
+      <div className="overflow-x-auto -mx-4 px-4 md:mx-0 md:px-0 mb-4 md:mb-5">
+      <div className="flex gap-2 min-w-max md:min-w-0 md:flex-wrap">
         {STATUSES.map(s => (
           <button key={s.value}
             onClick={() => setFilterStatus(s.value)}
-            className={`text-sm px-4 py-2 rounded-lg font-medium transition-all ${filterStatus === s.value ? 'bg-blue-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>
+            className={`text-sm px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap ${filterStatus === s.value ? 'bg-blue-600 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'}`}>
             {s.label}
           </button>
         ))}
       </div>
+      </div>
 
       {orders.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-sm text-center py-16 text-gray-400">
+        <div className="bg-white rounded-xl shadow-sm text-center py-12 text-gray-400">
           <p>Không có đơn hàng</p>
         </div>
       ) : (

@@ -62,20 +62,20 @@ export default function AdminNewsForm() {
   const set = (k, v) => setForm(p => ({ ...p, [k]: v }));
 
   return (
-    <div className="p-6 max-w-3xl">
-      <div className="flex items-center gap-3 mb-6">
-        <Link to="/admin/tin-tuc" className="text-gray-400 hover:text-gray-600">
+    <div className="p-4 md:p-6 max-w-3xl">
+      <div className="flex items-center gap-3 mb-5">
+        <Link to="/admin/tin-tuc" className="text-gray-400 hover:text-gray-600 p-1 -ml-1">
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </Link>
-        <h1 className="text-2xl font-black text-gray-800">{isEdit ? 'Sửa bài viết' : 'Thêm bài viết'}</h1>
+        <h1 className="text-xl md:text-2xl font-black text-gray-800">{isEdit ? 'Sửa bài viết' : 'Thêm bài viết'}</h1>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         {/* Image */}
-        <div className="bg-white rounded-xl shadow-sm p-5">
-          <h2 className="font-bold text-gray-700 mb-4">Ảnh bài viết</h2>
+        <div className="bg-white rounded-xl shadow-sm p-4 md:p-5">
+          <h2 className="font-bold text-gray-700 mb-3">Ảnh bài viết</h2>
           <div className="flex gap-5 items-start">
             <div onClick={() => fileRef.current.click()}
               className="w-40 h-28 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition-all flex-shrink-0 overflow-hidden bg-gray-50">
@@ -103,7 +103,7 @@ export default function AdminNewsForm() {
         </div>
 
         {/* Content */}
-        <div className="bg-white rounded-xl shadow-sm p-5 space-y-4">
+        <div className="bg-white rounded-xl shadow-sm p-4 md:p-5 space-y-3">
           <h2 className="font-bold text-gray-700">Nội dung bài viết</h2>
           <div>
             <label className="block text-sm font-semibold text-gray-600 mb-1">Tiêu đề <span className="text-red-500">*</span></label>
@@ -135,11 +135,11 @@ export default function AdminNewsForm() {
 
         <div className="flex gap-3 pb-6">
           <button type="submit" disabled={loading}
-            className="bg-blue-600 text-white font-bold px-8 py-2.5 rounded-lg hover:bg-blue-700 disabled:opacity-60 transition-colors">
+            className="flex-1 sm:flex-none bg-blue-600 text-white font-bold px-6 md:px-8 py-3 rounded-lg hover:bg-blue-700 disabled:opacity-60 transition-colors text-sm">
             {loading ? 'Đang lưu...' : isEdit ? 'Cập nhật' : 'Thêm bài viết'}
           </button>
           <Link to="/admin/tin-tuc"
-            className="bg-gray-100 text-gray-700 font-medium px-6 py-2.5 rounded-lg hover:bg-gray-200 transition-colors">
+            className="flex-1 sm:flex-none text-center bg-gray-100 text-gray-700 font-medium px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors text-sm">
             Hủy
           </Link>
         </div>

@@ -23,11 +23,11 @@ export default function AdminContacts() {
   if (loading) return <div className="p-8 text-center text-gray-500">Đang tải...</div>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-black text-gray-800 mb-6">Liên hệ từ khách hàng</h1>
+    <div className="p-4 md:p-6">
+      <h1 className="text-xl md:text-2xl font-black text-gray-800 mb-4 md:mb-6">Liên hệ từ khách hàng</h1>
 
       {contacts.length === 0 ? (
-        <div className="bg-white rounded-xl shadow-sm text-center py-16 text-gray-400">
+        <div className="bg-white rounded-xl shadow-sm text-center py-12 text-gray-400">
           <p>Chưa có liên hệ nào</p>
         </div>
       ) : (
