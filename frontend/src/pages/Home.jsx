@@ -59,7 +59,18 @@ const PRICING_PREVIEW = [
   { service: 'Tháo máy giặt', price: '100.000đ' },
 ];
 
-const BRANDS = ['Daikin', 'Panasonic', 'LG', 'Samsung', 'Toshiba', 'Electrolux', 'Aqua', 'Sharp', 'Midea', 'Casper'];
+const BRANDS = [
+  { name: 'Daikin',     img: '/doi_tac/Screenshot 2026-05-13 192915.png',  bg: 'white' },
+  { name: 'Panasonic',  img: '/doi_tac/Panasonic_logo_PNG1.png',            bg: 'white' },
+  { name: 'LG',         img: '/doi_tac/LG_logo_(2014).svg.png',             bg: 'white' },
+  { name: 'Samsung',    img: '/doi_tac/Samsung_Orig_Wordmark_BLUE_RGB.jpg', bg: 'white' },
+  { name: 'Toshiba',    img: '/doi_tac/Toshiba_logo_PNG_(2).png',           bg: 'white' },
+  { name: 'Electrolux', img: '/doi_tac/Screenshot 2026-05-13 193632.png',   bg: 'white' },
+  { name: 'Aqua',       img: '/doi_tac/Screenshot 2026-05-13 193858.png',   bg: 'white' },
+  { name: 'Sharp',      img: '/doi_tac/Sharp_logo_PNG1.png',                bg: 'white' },
+  { name: 'Midea',      img: '/doi_tac/Midea_Group-Logo.wine.png',          bg: 'white' },
+  { name: 'Casper',     img: '/doi_tac/Screenshot 2026-05-13 194304.png',   bg: '#1fa3a8' },
+];
 
 export default function Home() {
   const [news, setNews] = useState([]);
@@ -72,10 +83,13 @@ export default function Home() {
   return (
     <div>
       {/* ===== HERO ===== */}
-      <section className="relative bg-brand-navy overflow-hidden" style={{ minHeight: 520 }}>
-        <div className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)', backgroundSize: '20px 20px' }}
+      <section className="relative overflow-hidden" style={{ minHeight: 520 }}>
+        {/* Banner background */}
+        <div className="absolute inset-0"
+          style={{ backgroundImage: "url('/banner.png')", backgroundSize: 'cover', backgroundPosition: 'center top' }}
         />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-brand-navy/75" />
         <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-16 lg:py-24 flex items-center">
           <div className="w-full lg:w-1/2">
             <span className="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/40 text-brand-yellow text-xs font-bold px-3 py-1.5 rounded-full mb-5">
@@ -321,9 +335,18 @@ export default function Home() {
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             {BRANDS.map(b => (
-              <Link key={b} to={`/san-pham?brand=${encodeURIComponent(b)}`}
-                className="bg-white border border-gray-200 hover:border-brand-yellow hover:shadow-md transition-all px-6 py-3 rounded-lg text-sm font-bold text-gray-600 hover:text-brand-dark">
-                {b}
+              <Link key={b.name} to={`/san-pham?brand=${encodeURIComponent(b.name)}`}
+                className="group border border-gray-200 hover:border-brand-yellow hover:shadow-md transition-all rounded-xl overflow-hidden"
+                style={{ backgroundColor: b.bg }}>
+                <div className="w-36 h-20 flex items-center justify-center p-3">
+                  <img
+                    src={b.img}
+                    alt={b.name}
+                    className="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-200"
+                    title={b.name}
+                    onError={e => { e.target.style.display = 'none'; e.target.parentElement.innerHTML = `<span class="text-sm font-bold text-gray-600">${b.name}</span>`; }}
+                  />
+                </div>
               </Link>
             ))}
           </div>

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { DatabaseSync } = require('node:sqlite');
 const path = require('path');
 const fs = require('fs');
@@ -71,7 +72,22 @@ function initDB() {
       status TEXT DEFAULT 'pending',
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
+
+    CREATE TABLE IF NOT EXISTS admin_users (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      username TEXT UNIQUE NOT NULL,
+      password TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
   `);
+
+  const adminCount = db.prepare('SELECT COUNT(*) as c FROM admin_users').get();
+  if (adminCount.c === 0) {
+    const bcrypt = require('bcryptjs');
+    const hash = bcrypt.hashSync(process.env.ADMIN_PASSWORD || 'admin123', 10);
+    const username = process.env.ADMIN_USERNAME || 'admin';
+    db.prepare('INSERT INTO admin_users (username, password) VALUES (?, ?)').run(username, hash);
+  }
 
   const count = db.prepare('SELECT COUNT(*) as c FROM categories').get();
   if (count.c === 0) {

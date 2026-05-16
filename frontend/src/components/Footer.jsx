@@ -1,6 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export default function Footer() {
+  const [clicks, setClicks] = useState(0);
+  const navigate = useNavigate();
+
+  const handleSecretClick = () => {
+    const next = clicks + 1;
+    setClicks(next);
+    if (next >= 5) { setClicks(0); navigate('/admin/login'); }
+    setTimeout(() => setClicks(0), 3000);
+  };
   return (
     <footer className="bg-brand-navy text-white">
       <div className="max-w-7xl mx-auto px-4 py-12">
@@ -113,7 +123,12 @@ export default function Footer() {
 
       <div className="border-t border-brand-dark-3">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-500">
-          <span>© 2025 Điện Lạnh Cần Thơ – Duy Khánh | CÔNG TY TNHH TM DV SOLAR BASE | MST: 1801827040</span>
+          <span
+            onClick={handleSecretClick}
+            className="cursor-default select-none"
+            title="">
+            © 2025 Điện Lạnh Cần Thơ – Duy Khánh | CÔNG TY TNHH TM DV SOLAR BASE | MST: 1801827040
+          </span>
           <div className="flex items-center gap-1">
             <span className="text-brand-yellow">★★★★★</span>
             <span>5,0 (486 đánh giá)</span>
