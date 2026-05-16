@@ -22,6 +22,7 @@ app.use('/api/products', require('./routes/products'));
 app.use('/api/news', require('./routes/news'));
 app.use('/api/contacts', require('./routes/contacts'));
 app.use('/api/orders', require('./routes/orders'));
+app.use('/api/settings', require('./routes/settings'));
 
 // Admin routes
 app.use('/api/admin/auth', require('./routes/admin/auth'));
@@ -30,6 +31,7 @@ app.use('/api/admin/categories', require('./routes/admin/categories'));
 app.use('/api/admin/news', require('./routes/admin/news'));
 app.use('/api/admin/orders', require('./routes/admin/orders'));
 app.use('/api/admin/contacts', require('./routes/admin/contacts'));
+app.use('/api/admin/settings', require('./routes/admin/settings'));
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Backend running on port ${PORT}`);

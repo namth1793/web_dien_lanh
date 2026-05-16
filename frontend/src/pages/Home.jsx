@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SERVICES = [
   { icon: '❄️', title: 'Sửa chữa máy lạnh', desc: 'Sửa mọi sự cố: không lạnh, chảy nước, hỏng block, thiếu gas, lỗi bo mạch. Kỹ thuật viên đến tận nhà.', img: '/SUA%20CHUA%20MAY%20LANH/487396338_1294721982123779_1821340800911696131_n.jpg' },
@@ -75,9 +75,13 @@ const BRANDS = [
 export default function Home() {
   const [news, setNews] = useState([]);
   const [reviewIdx, setReviewIdx] = useState(0);
+  const [bannerUrl, setBannerUrl] = useState('/banner.png');
 
   useEffect(() => {
     axios.get('/api/news?limit=3').then(r => setNews(r.data)).catch(() => {});
+    axios.get('/api/settings').then(r => {
+      if (r.data.banner_url) setBannerUrl(r.data.banner_url);
+    }).catch(() => {});
   }, []);
 
   return (
@@ -86,7 +90,7 @@ export default function Home() {
       <section className="relative overflow-hidden" style={{ minHeight: 520 }}>
         {/* Banner background */}
         <div className="absolute inset-0"
-          style={{ backgroundImage: "url('/banner.png')", backgroundSize: 'cover', backgroundPosition: 'center top' }}
+          style={{ backgroundImage: `url('${bannerUrl}')`, backgroundSize: 'cover', backgroundPosition: 'center top' }}
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-brand-navy/75" />
@@ -131,7 +135,7 @@ export default function Home() {
           </div>
           <div className="hidden lg:flex w-1/2 justify-end pl-10">
             <div className="relative w-full max-w-md">
-              <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden border-2 border-brand-yellow/30 shadow-2xl">
+              <div className="w-full aspect-[4/2.9] rounded-2xl overflow-hidden border-2 border-brand-yellow/30 shadow-2xl">
                 <img
                   src="/banner%20hero/674856834_1625489449047029_1617532125787296419_n.jpg"
                   alt="Điện Lạnh Duy Khánh"

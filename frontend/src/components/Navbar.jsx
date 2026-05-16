@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import axios from 'axios';
 
 const NAV = [
   { to: '/', label: 'Trang chủ' },
@@ -11,10 +12,19 @@ const NAV = [
   { to: '/lien-he', label: 'Liên hệ' },
 ];
 
+const DEFAULT_LOGO = '/LOGO/487315668_1072654048216447_3543304931783471982_n.jpg';
+
 export default function Navbar({ onCartClick }) {
   const [open, setOpen] = useState(false);
+  const [logoUrl, setLogoUrl] = useState(DEFAULT_LOGO);
   const { count } = useCart();
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    axios.get('/api/settings').then(r => {
+      if (r.data.logo_url) setLogoUrl(r.data.logo_url);
+    }).catch(() => {});
+  }, []);
 
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
@@ -22,9 +32,9 @@ export default function Navbar({ onCartClick }) {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-          <img src="/LOGO/487315668_1072654048216447_3543304931783471982_n.jpg" alt="Điện Lạnh Duy Khánh"
+          <img src={logoUrl} alt="Điện Lạnh Duy Khánh"
             className="w-11 h-11 rounded-full object-cover shadow"
-            onError={e => { e.target.src = '/LOGO/627529988_1562292492033392_1953494431822085557_n.jpg'; }}/>
+            onError={e => { e.target.src = DEFAULT_LOGO; }}/>
           <div className="leading-tight">
             <div className="font-black text-brand-dark text-base">ĐIỆN LẠNH DUY KHÁNH</div>
             <div className="text-[10px] text-gray-400 uppercase tracking-wide">CÔNG TY SOLAR BASE – Cần Thơ</div>

@@ -79,6 +79,11 @@ function initDB() {
       password TEXT NOT NULL,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
+
+    CREATE TABLE IF NOT EXISTS settings (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL
+    );
   `);
 
   const adminCount = db.prepare('SELECT COUNT(*) as c FROM admin_users').get();
@@ -87,6 +92,12 @@ function initDB() {
     const hash = bcrypt.hashSync(process.env.ADMIN_PASSWORD || 'admin123', 10);
     const username = process.env.ADMIN_USERNAME || 'admin';
     db.prepare('INSERT INTO admin_users (username, password) VALUES (?, ?)').run(username, hash);
+  }
+
+  const settingsCount = db.prepare("SELECT COUNT(*) as c FROM settings").get();
+  if (settingsCount.c === 0) {
+    db.prepare("INSERT INTO settings (key, value) VALUES (?, ?)").run('banner_url', '/banner.png');
+    db.prepare("INSERT INTO settings (key, value) VALUES (?, ?)").run('logo_url', '/LOGO/487315668_1072654048216447_3543304931783471982_n.jpg');
   }
 
   const count = db.prepare('SELECT COUNT(*) as c FROM categories').get();

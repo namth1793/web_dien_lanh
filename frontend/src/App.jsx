@@ -26,6 +26,7 @@ import AdminNews from './pages/admin/AdminNews';
 import AdminNewsForm from './pages/admin/AdminNewsForm';
 import AdminOrders from './pages/admin/AdminOrders';
 import AdminContacts from './pages/admin/AdminContacts';
+import AdminSettings from './pages/admin/AdminSettings';
 import { useState } from 'react';
 
 export default function App() {
@@ -50,6 +51,7 @@ export default function App() {
               <Route path="tin-tuc/sua/:id" element={<AdminNewsForm />} />
               <Route path="don-hang" element={<AdminOrders />} />
               <Route path="lien-he" element={<AdminContacts />} />
+              <Route path="cai-dat" element={<AdminSettings />} />
             </Route>
 
             {/* Public routes */}
