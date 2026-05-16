@@ -69,6 +69,12 @@ export default function AdminLogin() {
             {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
           </button>
         </form>
+
+        <div className="mt-4 text-center">
+          <a href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
+            ← Quay về trang chủ
+          </a>
+        </div>
       </div>
     </div>
   );
