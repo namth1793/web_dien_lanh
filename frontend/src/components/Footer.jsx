@@ -33,6 +33,10 @@ export default function Footer() {
                 className="w-9 h-9 bg-brand-dark-3 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors font-black text-sm">
                 Z
               </a>
+              <a href="https://www.tiktok.com/@dienlanh_cantho" target="_blank" rel="noreferrer"
+                className="w-9 h-9 bg-brand-dark-3 hover:bg-black rounded-full flex items-center justify-center transition-colors">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+              </a>
             </div>
           </div>
 
@@ -79,12 +83,6 @@ export default function Footer() {
                   <div><a href="tel:0911678101" className="hover:text-brand-yellow transition-colors font-semibold text-white">0911.678.101</a></div>
                   <div><a href="tel:0366755156" className="hover:text-brand-yellow transition-colors">0366.755.156</a></div>
                 </div>
-              </li>
-              <li className="flex gap-2.5">
-                <svg className="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-                </svg>
-                <a href="https://dienlanhcantho.com" target="_blank" rel="noreferrer" className="hover:text-brand-yellow transition-colors">dienlanhcantho.com</a>
               </li>
             </ul>
           </div>

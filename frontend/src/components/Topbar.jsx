@@ -22,6 +22,9 @@ export default function Topbar() {
           <a href="https://m.me/dienlanhcantho65" target="_blank" rel="noreferrer" className="hover:text-brand-yellow transition-colors">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.145 2 11.243c0 2.932 1.459 5.548 3.742 7.266V22l3.405-1.869c.909.252 1.871.388 2.853.388 5.523 0 10-4.145 10-9.276C22 6.145 17.523 2 12 2zm.99 12.49l-2.54-2.71-4.96 2.71 5.46-5.79 2.6 2.71 4.9-2.71-5.46 5.79z"/></svg>
           </a>
+          <a href="https://www.tiktok.com/@dienlanh_cantho" target="_blank" rel="noreferrer" className="hover:text-brand-yellow transition-colors">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+          </a>
         </div>
       </div>
     </div>

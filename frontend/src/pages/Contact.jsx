@@ -1,6 +1,6 @@
+import axios from 'axios';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', email: '', address: '', service: '', message: '' });
@@ -79,9 +79,10 @@ export default function Contact() {
                   className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-600 transition-colors">
                   <span className="font-black">Z</span> Zalo: 0911.678.101
                 </a>
-                <a href="https://dienlanhcantho.com" target="_blank" rel="noreferrer"
-                  className="flex items-center gap-2 bg-gray-700 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors">
-                  🌐 dienlanhcantho.com
+                <a href="https://www.tiktok.com/@dienlanh_cantho" target="_blank" rel="noreferrer"
+                  className="flex items-center gap-2 bg-black text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-900 transition-colors">
+                  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+                  TikTok: @dienlanh_cantho
                 </a>
               </div>
             </div>

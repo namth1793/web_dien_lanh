@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function News() {
   const [news, setNews] = useState([]);
@@ -18,7 +18,7 @@ export default function News() {
           <h1 className="text-3xl md:text-4xl font-black text-white mb-3">TIN TỨC & KINH NGHIỆM</h1>
           <div className="w-14 h-1 bg-brand-yellow rounded mx-auto mb-4"/>
           <p className="text-gray-400 max-w-xl mx-auto text-sm">
-            Kiến thức điện lạnh, mẹo tiết kiệm điện, hướng dẫn bảo dưỡng và cập nhật khuyến mãi mới nhất từ MK JSC.
+            Kiến thức điện lạnh, mẹo tiết kiệm điện, hướng dẫn bảo dưỡng và cập nhật khuyến mãi mới nhất từ Điện lạnh Cần Thơ - Duy Khánh.
           </p>
           <nav className="text-xs text-gray-500 mt-4 flex items-center justify-center gap-2">
             <Link to="/" className="hover:text-brand-yellow">Trang chủ</Link>
