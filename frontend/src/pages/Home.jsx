@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SERVICES = [
-  { icon: '❄️', title: 'Sửa chữa máy lạnh', desc: 'Sửa mọi sự cố: không lạnh, chảy nước, hỏng block, thiếu gas, lỗi bo mạch. Kỹ thuật viên đến tận nhà.', img: '/SUA%20CHUA%20MAY%20LANH/487396338_1294721982123779_1821340800911696131_n.jpg' },
-  { icon: '🧹', title: 'Vệ sinh máy lạnh', desc: 'Vệ sinh dàn lạnh, dàn nóng chuyên sâu – diệt khuẩn, khử mùi – máy mát hơn, tiết kiệm điện.', img: '/VE%20SINH%20MAY%20LANH/487302961_1293768195552491_2989817229053310482_n.jpg' },
+  { icon: '❄️', title: 'Sửa chữa máy lạnh', desc: 'Sửa mọi sự cố: không lạnh, chảy nước, hỏng block, thiếu gas, lỗi bo mạch. Kỹ thuật viên đến tận nhà.', img: '/SUA%20CHUA%20MAY%20LANH/532425601_1411404593788850_593237369142469188_n.jpg' },
+  { icon: '🧹', title: 'Vệ sinh máy lạnh', desc: 'Vệ sinh dàn lạnh, dàn nóng chuyên sâu – diệt khuẩn, khử mùi – máy mát hơn, tiết kiệm điện.', img: '/Screenshot_2026-05-13_201353.png' },
   { icon: '🔧', title: 'Tháo lắp máy lạnh', desc: 'Tháo lắp, di dời máy lạnh đúng kỹ thuật. Tặng vật tư + công lắp khu vực Ninh Kiều, Cái Răng.', img: '/LAP%20DAT%20MAY%20LANH/505444647_1353418382920805_6546992740157024720_n.jpg' },
   { icon: '🫧', title: 'Sửa chữa máy giặt', desc: 'Khắc phục: không quay, không vắt, rò nước, lỗi board mạch – tất cả các thương hiệu tại nhà.', img: '/SUA%20CHUA%20MAY%20GIAT/594955796_1511027010493274_5059038851730414396_n.jpg' },
-  { icon: '🧊', title: 'Sửa chữa tủ lạnh', desc: 'Sửa tủ lạnh không lạnh, đóng tuyết, rò điện, hỏng block, nạp gas – nhanh chóng, uy tín.', img: 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=500&h=280&fit=crop' },
+  { icon: '🧊', title: 'Sửa chữa tủ lạnh', desc: 'Sửa tủ lạnh không lạnh, đóng tuyết, rò điện, hỏng block, nạp gas – nhanh chóng, uy tín.', img: '/Screenshot_2026-05-13_201035.png' },
   { icon: '🏠', title: 'Vệ sinh máy giặt', desc: 'Tháo lồng giặt vệ sinh sâu, loại bỏ cặn bẩn, mùi hôi – quần áo sạch thơm như mới.', img: '/VE%20SINH%20MAY%20GIAT/571272130_1246645977483919_78131708542412010_n.jpg' },
 ];
 

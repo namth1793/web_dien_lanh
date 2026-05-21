@@ -50,7 +50,10 @@ export default function NewsDetail() {
               <p className="text-gray-600 text-sm italic mb-5 bg-brand-yellow/5 border-l-4 border-brand-yellow pl-4 py-2 rounded-r-lg">
                 {article.summary}
               </p>
-              <div className="text-gray-700 leading-relaxed whitespace-pre-line text-sm">{article.content}</div>
+              <div
+                className="news-content text-sm leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+              />
             </div>
           </article>
 

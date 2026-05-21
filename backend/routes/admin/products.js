@@ -9,7 +9,22 @@ function makeSlug(str) {
   return str.toLowerCase().split('').map(c => map[c] || c).join('').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + Date.now();
 }
 
-// GET all products with category info
+function destroyCloudinary(url) {
+  if (!url || !url.includes('cloudinary')) return;
+  const parts = url.split('/');
+  const publicId = 'dien-lanh-mk/' + parts[parts.length - 1].split('.')[0];
+  cloudinary.uploader.destroy(publicId).catch(() => {});
+}
+
+function parseImages(jsonStr, fallbackImage) {
+  try {
+    const arr = JSON.parse(jsonStr || '[]');
+    if (Array.isArray(arr) && arr.length) return arr;
+  } catch {}
+  return fallbackImage ? [fallbackImage] : [];
+}
+
+// GET all products
 router.get('/', auth, (req, res) => {
   const { category_id } = req.query;
   let query = 'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE 1=1';
@@ -26,18 +41,20 @@ router.get('/:id', auth, (req, res) => {
   res.json(p);
 });
 
-// POST create product
-router.post('/', auth, upload.single('image'), (req, res) => {
+// POST create product – accept up to 20 images
+router.post('/', auth, upload.array('images', 20), (req, res) => {
   try {
     const { name, category_id, brand, model, price, original_price, description, specs, is_featured, is_sale, stock } = req.body;
     if (!name || !category_id || !price) return res.status(400).json({ error: 'Thiếu thông tin bắt buộc' });
     const slug = makeSlug(name);
-    const image = req.file ? req.file.path : '';
-    db.prepare(`INSERT INTO products (name,slug,category_id,brand,model,price,original_price,description,specs,image,is_featured,is_sale,stock)
-      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(
+    const imageUrls = req.files ? req.files.map(f => f.path) : [];
+    const image = imageUrls[0] || '';
+    const images = JSON.stringify(imageUrls);
+    db.prepare(`INSERT INTO products (name,slug,category_id,brand,model,price,original_price,description,specs,image,images,is_featured,is_sale,stock)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(
       name, slug, parseInt(category_id), brand || '', model || '',
       parseInt(price), original_price ? parseInt(original_price) : null,
-      description || '', specs || '{}', image,
+      description || '', specs || '{}', image, images,
       is_featured === 'true' || is_featured === '1' ? 1 : 0,
       is_sale === 'true' || is_sale === '1' ? 1 : 0,
       stock ? parseInt(stock) : 10
@@ -48,27 +65,33 @@ router.post('/', auth, upload.single('image'), (req, res) => {
   }
 });
 
-// PUT update product
-router.put('/:id', auth, upload.single('image'), (req, res) => {
+// PUT update product – keepImages (JSON) + new images files
+router.put('/:id', auth, upload.array('images', 20), (req, res) => {
   try {
-    const { name, category_id, brand, model, price, original_price, description, specs, is_featured, is_sale, stock } = req.body;
+    const { name, category_id, brand, model, price, original_price, description, specs, is_featured, is_sale, stock, keepImages } = req.body;
     const existing = db.prepare('SELECT * FROM products WHERE id = ?').get(req.params.id);
     if (!existing) return res.status(404).json({ error: 'Không tìm thấy' });
 
-    let image = existing.image;
-    if (req.file) {
-      if (existing.image && existing.image.includes('cloudinary')) {
-        const parts = existing.image.split('/');
-        const publicId = 'dien-lanh-mk/' + parts[parts.length - 1].split('.')[0];
-        cloudinary.uploader.destroy(publicId).catch(() => {});
-      }
-      image = req.file.path;
-    }
+    // Parse kept URLs (existing images user chose to keep)
+    let keptUrls = [];
+    try { keptUrls = JSON.parse(keepImages || '[]'); } catch {}
 
-    db.prepare(`UPDATE products SET name=?,category_id=?,brand=?,model=?,price=?,original_price=?,description=?,specs=?,image=?,is_featured=?,is_sale=?,stock=? WHERE id=?`).run(
+    // Newly uploaded images
+    const newUrls = req.files ? req.files.map(f => f.path) : [];
+
+    // Combined image list
+    const allImages = [...keptUrls, ...newUrls];
+    const image = allImages[0] || existing.image;
+    const imagesJson = JSON.stringify(allImages);
+
+    // Delete removed images from Cloudinary
+    const existingImgs = parseImages(existing.images, existing.image);
+    existingImgs.filter(url => !keptUrls.includes(url)).forEach(destroyCloudinary);
+
+    db.prepare(`UPDATE products SET name=?,category_id=?,brand=?,model=?,price=?,original_price=?,description=?,specs=?,image=?,images=?,is_featured=?,is_sale=?,stock=? WHERE id=?`).run(
       name, parseInt(category_id), brand || '', model || '',
       parseInt(price), original_price ? parseInt(original_price) : null,
-      description || '', specs || '{}', image,
+      description || '', specs || '{}', image, imagesJson,
       is_featured === 'true' || is_featured === '1' ? 1 : 0,
       is_sale === 'true' || is_sale === '1' ? 1 : 0,
       stock ? parseInt(stock) : 10,
@@ -85,11 +108,7 @@ router.delete('/:id', auth, (req, res) => {
   try {
     const existing = db.prepare('SELECT * FROM products WHERE id = ?').get(req.params.id);
     if (!existing) return res.status(404).json({ error: 'Không tìm thấy' });
-    if (existing.image && existing.image.includes('cloudinary')) {
-      const parts = existing.image.split('/');
-      const publicId = 'dien-lanh-mk/' + parts[parts.length - 1].split('.')[0];
-      cloudinary.uploader.destroy(publicId).catch(() => {});
-    }
+    parseImages(existing.images, existing.image).forEach(destroyCloudinary);
     db.prepare('DELETE FROM products WHERE id = ?').run(req.params.id);
     res.json({ success: true });
   } catch (e) {

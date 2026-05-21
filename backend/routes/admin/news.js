@@ -9,16 +9,25 @@ function makeSlug(str) {
   return str.toLowerCase().split('').map(c => map[c] || c).join('').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') + '-' + Date.now();
 }
 
+// GET all
 router.get('/', auth, (req, res) => {
   res.json(db.prepare('SELECT * FROM news ORDER BY id DESC').all());
 });
 
+// POST upload inline image for news editor (must be before /:id)
+router.post('/upload-image', auth, upload.single('image'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'Không có file ảnh' });
+  res.json({ url: req.file.path });
+});
+
+// GET single
 router.get('/:id', auth, (req, res) => {
   const n = db.prepare('SELECT * FROM news WHERE id = ?').get(req.params.id);
   if (!n) return res.status(404).json({ error: 'Không tìm thấy' });
   res.json(n);
 });
 
+// POST create
 router.post('/', auth, upload.single('image'), (req, res) => {
   try {
     const { title, summary, content, category } = req.body;
@@ -34,6 +43,7 @@ router.post('/', auth, upload.single('image'), (req, res) => {
   }
 });
 
+// PUT update
 router.put('/:id', auth, upload.single('image'), (req, res) => {
   try {
     const { title, summary, content, category } = req.body;
@@ -57,6 +67,7 @@ router.put('/:id', auth, upload.single('image'), (req, res) => {
   }
 });
 
+// DELETE
 router.delete('/:id', auth, (req, res) => {
   try {
     const existing = db.prepare('SELECT * FROM news WHERE id = ?').get(req.params.id);
